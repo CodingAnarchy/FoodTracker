@@ -10,7 +10,8 @@ import UIKit
 
 class RatingControl: UIView {
     // MARK: Properties
-    
+    var spacing = 5
+    var stars = 5
     var rating = 0 {
         didSet {
             setNeedsLayout()
@@ -26,7 +27,7 @@ class RatingControl: UIView {
         let filledStarImage = UIImage(named: "filledStar")
         let emptyStarImage = UIImage(named: "emptyStar")
         
-        for _ in 0..<5 {
+        for _ in 0..<stars {
             let button = UIButton()
             
             button.setImage(emptyStarImage, forState: .Normal)
@@ -50,7 +51,7 @@ class RatingControl: UIView {
         
         // Offset each button's origin by the length of the button plus spacing
         for (index, button) in ratingButtons.enumerate() {
-            buttonFrame.origin.x = CGFloat(index * (buttonSize + 5))
+            buttonFrame.origin.x = CGFloat(index * (buttonSize + spacing))
             button.frame = buttonFrame
         }
         
